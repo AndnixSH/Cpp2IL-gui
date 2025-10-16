@@ -26,11 +26,11 @@ I use Pyinstaller https://pyinstaller.org/en/stable/
 Install Pyinstaller on your favorite operating system then run `pyinstaller --onefile main.py`
 
 # Preview
-![Image1](/Assets/Preview 1.png)
+![Image1](/Assets/Preview1.png)
 
-![Image1](/Assets/Preview 2.png)
+![Image1](/Assets/Preview2.png)
 
-![Image1](/Assets/Preview 3.png)
+![Image1](/Assets/Preview3.png)
 
 # Credits
 - SamboyCoding - for Cpp2IL | [GitHub](https://github.com/SamboyCoding/cpp2il)
