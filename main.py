@@ -5,7 +5,7 @@ import sys, os, shutil, subprocess
 
 # ---- App metadata ----
 VERSION = "1.0.0"
-UPDATE_URL = "https://github.com/2/Cpp2IL-gui/blob/main/version.txt"
+UPDATE_URL = "https://raw.githubusercontent.com/AndnixSH/Cpp2IL-gui/refs/heads/main/version.txt"
 
 # ---- Paths / defaults ----
 folderpath = os.getcwd()
