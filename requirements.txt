@@ -1,0 +1,2 @@
+dearpygui==2.1.0
+httpx==0.28.1
