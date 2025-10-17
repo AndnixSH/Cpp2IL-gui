@@ -270,20 +270,20 @@ def resolve_cpp2il_path():
 
     if os.path.isdir(cpp2ilfolder):
         if os_name == "windows":
-            exe = os.path.join(cpp2ilfolder, "windows", "cpp2il.exe")
+            exe = os.path.join(cpp2ilfolder, "windows", "Cpp2IL.exe")
         elif os_name == "linux":
-            exe = os.path.join(cpp2ilfolder, "linux", "cpp2il")
+            exe = os.path.join(cpp2ilfolder, "linux", "Cpp2IL")
         elif os_name == "macos":
-            exe = os.path.join(cpp2ilfolder, "macos", "cpp2il")
+            exe = os.path.join(cpp2ilfolder, "macos", "Cpp2IL")
         elif os_name == "linux":
-            exe = os.path.join(cpp2ilfolder, "linux-arm64", "cpp2il" if arch == "arm64" else "cpp2il")
+            exe = os.path.join(cpp2ilfolder, "linux-arm64", "Cpp2IL" if arch == "arm64" else "Cpp2IL")
         elif os_name == "macos":
-            exe = os.path.join(cpp2ilfolder, "macos-arm64", "cpp2il" if arch == "arm64" else "cpp2il")
+            exe = os.path.join(cpp2ilfolder, "macos-arm64", "Cpp2IL" if arch == "arm64" else "Cpp2IL")
     else:
         if os_name == "windows":
-            exe = os.path.join(assetsfolder, "cpp2il.exe")
+            exe = os.path.join(assetsfolder, "Cpp2IL.exe")
         else:
-            exe = os.path.join(assetsfolder, "cpp2il")
+            exe = os.path.join(assetsfolder, "Cpp2IL")
 
     if os_name in ("linux", "macos") and os.path.isfile(exe):
         try:
