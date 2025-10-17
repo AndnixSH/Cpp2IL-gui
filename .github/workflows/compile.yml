@@ -24,7 +24,6 @@ jobs:
           - os: windows-latest
             arch: x64
             bin_path: Cpp2IL/Windows
-        project: [Cpp2IL-GUI]
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.arch }}
@@ -65,5 +64,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.project }}-${{ matrix.os }}-${{ matrix.arch }}
+          name: $Cpp2IL-GUI-${{ matrix.os }}-${{ matrix.arch }}
           path: artifacts/
