@@ -16,6 +16,7 @@ Cpp2IL But made into GUI for easier use
 Note: 
 - Check the Cpp2IL Documentation first before using: https://github.com/SamboyCoding/cpp2il?tab=readme-ov-file#supported-command-line-option-listing
 - Drag and drop are not supported
+- MacOS ARM64 version does not support Tahoe 26 but you can use x86_64 version instead
 
 # How to compile
 I use Pyinstaller https://pyinstaller.org/en/stable/
