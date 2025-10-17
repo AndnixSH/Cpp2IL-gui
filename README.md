@@ -6,10 +6,7 @@
   <a href=""><img src="https://img.shields.io/github/downloads/AndnixSH/Cpp2IL-gui/total.svg"></a>
   <a href=""><img src="https://img.shields.io/github/v/release/AndnixSH/Cpp2IL-gui"></a>
 </p>
-<p align="center">
-  <a href=""><img src="https://img.shields.io/github/stars/YeetDisDude/Cpp2IL-gui?style=social"></a>
-</p>
-  
+
 # Requirements
 - Windows x86_64/Linux x86_64/MacOS x86_64 & ARM64
 - GPU acceleration. Cpp2IL GUI won't run if your system runs in software acceleration due to missing GPU drivers
