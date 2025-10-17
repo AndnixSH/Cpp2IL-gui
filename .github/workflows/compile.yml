@@ -24,6 +24,7 @@ jobs:
           - os: windows-latest
             arch: x64
             bin_path: Cpp2IL/Windows
+        project: Cpp2IL-GUI
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.arch }}
@@ -47,21 +48,22 @@ jobs:
         run: |
           pyinstaller --onefile main.py
 
-      - name: Create zip archive
+      - name: Move files
         run: |
+            mkdir artifacts
+            mv Assets artifacts
+        
             if [ "${{ runner.os }}" = "Windows" ]; then
-            cp "${{ matrix.bin_path }}/Cpp2IL.exe" "Assets/Cpp2IL.exe"
-            cp "dist/main.exe" "main.exe"
+            mv "${{ matrix.bin_path }}/Cpp2IL.exe" "artifacts/Assets/"
+            mv "dist/main.exe" "artifacts/"
             else
-            cp "${{ matrix.bin_path }}/Cpp2IL" "Assets/Cpp2IL"
-            cp "dist/main" "main"
+            mv "${{ matrix.bin_path }}/Cpp2IL" "artifacts/Assets/"
+            mv "dist/main" "artifacts/"
             fi
-    
-            zip -r build.zip Assets main.exe
         shell: bash
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.project }}-${{ matrix.os }}-${{ matrix.arch }}
-          path: build.zip
+          path: artifacts/
