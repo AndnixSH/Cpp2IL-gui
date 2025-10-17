@@ -26,6 +26,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.arch }}
+
     steps:
       - name: Check out source code
         uses: actions/checkout@v4
@@ -46,17 +47,17 @@ jobs:
           pyinstaller --onefile main.py
 
       - name: Create zip archive
-      run: |
-          if [ "${{ runner.os }}" = "Windows" ]; then
-          cp "${{ matrix.bin_path }}/Cpp2IL.exe" "Assets/Cpp2IL.exe"
-          cp "dist/main.exe" "main.exe"
-          else
-          cp "${{ matrix.bin_path }}/Cpp2IL" "Assets/Cpp2IL"
-          cp "dist/main" "main"
-          fi
-   
-          zip -r build.zip Assets main.exe
-      shell: bash
+        run: |
+            if [ "${{ runner.os }}" = "Windows" ]; then
+            cp "${{ matrix.bin_path }}/Cpp2IL.exe" "Assets/Cpp2IL.exe"
+            cp "dist/main.exe" "main.exe"
+            else
+            cp "${{ matrix.bin_path }}/Cpp2IL" "Assets/Cpp2IL"
+            cp "dist/main" "main"
+            fi
+    
+            zip -r build.zip Assets main.exe
+        shell: bash
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
