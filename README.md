@@ -1,11 +1,8 @@
 
-<h1 align="center">Cpp2IL GUI</h1>
-<p align="center">Cpp2IL But made into GUI for easier use</p>
+# Cpp2IL GUI
+Cpp2IL But made into GUI for easier use
 
-<p align="center">
-  <a href=""><img src="https://img.shields.io/github/downloads/AndnixSH/Cpp2IL-gui/total.svg"></a>
-  <a href=""><img src="https://img.shields.io/github/v/release/AndnixSH/Cpp2IL-gui"></a>
-</p>
+[![](https://img.shields.io/github/downloads/AndnixSH/Cpp2IL-gui/total?style=for-the-badge)](https://github.com/AndnixSH/Cpp2IL-gui/releases) [![](https://img.shields.io/github/v/release/andnixsh/Cpp2IL-gui?style=for-the-badge)](https://github.com/AndnixSH/Cpp2IL-gui/releases)
 
 # Requirements
 - Windows x86_64/Linux x86_64/MacOS x86_64 & ARM64
