@@ -57,10 +57,10 @@ jobs:
         
             if [ "${{ runner.os }}" = "Windows" ]; then
             mv "${{ matrix.bin_path }}/Cpp2IL.exe" "artifacts/Assets/"
-            mv "dist/main.exe" "artifacts/"
+            mv "dist/main.exe" "artifacts/Cpp2IL-GUI.exe"
             else
             mv "${{ matrix.bin_path }}/Cpp2IL" "artifacts/Assets/"
-            mv "dist/main" "artifacts/"
+            mv "dist/main" "artifacts/Cpp2IL-GUI"
             fi
         shell: bash
 
