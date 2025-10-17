@@ -264,22 +264,26 @@ def resolve_cpp2il_path():
       Linux/Cpp2IL (x64) or Cpp2ILarm64
       macOS/Cpp2IL (x64) or Cpp2ILarm64
     """
-    base = os.path.join("Cpp2IL")
+    cpp2ilfolder = os.path.join("Cpp2IL")
+    assetsfolder = os.path.join("Assets")
     os_name, arch = detect_os_arch()
 
-    if os_name == "windows":
-        exe = os.path.join(base, "Windows", "Cpp2IL.exe")
-    elif os_name == "linux":
-        exe = os.path.join(base, "Linux", "Cpp2ILarm64" if arch == "arm64" else "Cpp2IL")
-    # Cpp2IL arm64 currently doesn't work
-    # elif os_name == "macos":
-        # exe = os.path.join(base, "macOS", "Cpp2ILarm64" if arch == "arm64" else "Cpp2IL")
-    elif os_name == "linux":
-        exe = os.path.join(base, "Linux", "Cpp2IL")
-    elif os_name == "macos":
-        exe = os.path.join(base, "macOS", "Cpp2IL")
+    if os.path.isdir(cpp2ilfolder):
+        if os_name == "windows":
+            exe = os.path.join(cpp2ilfolder, "windows", "cpp2il.exe")
+        elif os_name == "linux":
+            exe = os.path.join(cpp2ilfolder, "linux", "cpp2il")
+        elif os_name == "macos":
+            exe = os.path.join(cpp2ilfolder, "macos", "cpp2il")
+        elif os_name == "linux":
+            exe = os.path.join(cpp2ilfolder, "linux-arm64", "cpp2il" if arch == "arm64" else "cpp2il")
+        elif os_name == "macos":
+            exe = os.path.join(cpp2ilfolder, "macos-arm64", "cpp2il" if arch == "arm64" else "cpp2il")
     else:
-        exe = os.path.join(base, "Cpp2IL.exe")  # fallback
+        if os_name == "windows":
+            exe = os.path.join(assetsfolder, "cpp2il.exe")
+        else:
+            exe = os.path.join(assetsfolder, "cpp2il")
 
     if os_name in ("linux", "macos") and os.path.isfile(exe):
         try:

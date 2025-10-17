@@ -10,73 +10,57 @@ jobs:
         include:
           - os: ubuntu-latest
             arch: x64
+            bin_path: Cpp2IL/Linux
           - os: ubuntu-latest
             arch: arm64
+            bin_path: Cpp2IL/Linux-arm64
           - os: macos-latest
             arch: x64
+            bin_path: Cpp2IL/macOS
           - os: macos-latest
             arch: arm64
+            bin_path: Cpp2IL/macOS-arm64
           - os: windows-latest
             arch: x64
-        project: Cpp2IL-GUI
+            bin_path: Cpp2IL/Windows
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.arch }}
-    
+
     steps:
       - name: Check out source code
         uses: actions/checkout@v4
 
-      - name: Testing Cpp2IL on Ubuntu x86_64
-        if: matrix.os == 'ubuntu-latest' # && matrix.arch == 'x64'
+      - name: Test Cpp2IL binary
         run: |
-          cd Cpp2IL/Linux
-          chmod 777 Cpp2IL
+          cd "${{ matrix.bin_path }}"
+          chmod +x Cpp2IL 2>/dev/null || true
           ./Cpp2IL --version
-        
-      # Not working
-      # - name: Testing Cpp2IL on Ubuntu arm64
-        # if: matrix.os == 'ubuntu-latest' && matrix.arch == 'arm64'
-        # run: |
-          # cd Cpp2IL/Linux
-          # chmod 777 Cpp2ILarm64
-          # ./Cpp2ILarm64 --version
+        shell: bash
 
-      - name: Testing Cpp2IL on macOS x86_64
-        if: matrix.os == 'macos-latest' && matrix.arch == 'x64'
-        run: |
-          cd Cpp2IL/macOS
-          chmod 777 Cpp2IL
-          ./Cpp2IL --version
-        
-      - name: Testing Cpp2IL on macOS arm64
-        if: matrix.os == 'macos-latest' && matrix.arch == 'arm64'
-        run: |
-          cd Cpp2IL/macOS
-          chmod 777 Cpp2ILarm64
-          ./Cpp2ILarm64 --version
-        
-      - name: Testing Cpp2IL on Windows x86_64
-        if: matrix.os == 'windows-latest'
-        run: |
-          cd Cpp2IL/Windows
-          ./Cpp2IL --version
-          
-      - name: Installing pip modules
+      - name: Install pip modules
         run: |
           pip install dearpygui httpx pyinstaller
 
-      - name: Compiling
+      - name: Compile project
         run: |
           pyinstaller --onefile main.py
-          
+
+      - name: Create zip archive
+      run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+          cp "${{ matrix.bin_path }}/Cpp2IL.exe" "Assets/Cpp2IL.exe"
+          cp "dist/main.exe" "main.exe"
+          else
+          cp "${{ matrix.bin_path }}/Cpp2IL" "Assets/Cpp2IL"
+          cp "dist/main" "main"
+          fi
+   
+          zip -r build.zip Assets main.exe
+      shell: bash
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.project }}-${{ matrix.os }}-${{ matrix.arch }}
-          path: |
-            dist/
-          if-no-files-found: ignore
-
-          
-          
+          path: build.zip
