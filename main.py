@@ -5,7 +5,7 @@ import sys, os, shutil, subprocess
 
 # ---- App metadata ----
 VERSION = "1.0.0"
-UPDATE_URL = "https://raw.githubusercontent.com/AndnixSH/Cpp2IL-gui/refs/heads/main/version.txt"
+UPDATE_URL = "https://raw.githubusercontent.com/AndnixSH/Cpp2IL-gui/main/version.txt"
 
 # ---- Paths / defaults ----
 folderpath = os.getcwd()
@@ -269,8 +269,9 @@ def resolve_cpp2il_path():
 
     if os_name == "windows":
         exe = os.path.join(base, "Windows", "Cpp2IL.exe")
-    # elif os_name == "linux":
-        # exe = os.path.join(base, "Linux", "Cpp2ILarm64" if arch == "arm64" else "Cpp2IL")
+    elif os_name == "linux":
+        exe = os.path.join(base, "Linux", "Cpp2ILarm64" if arch == "arm64" else "Cpp2IL")
+    # Cpp2IL arm64 currently doesn't work
     # elif os_name == "macos":
         # exe = os.path.join(base, "macOS", "Cpp2ILarm64" if arch == "arm64" else "Cpp2IL")
     elif os_name == "linux":
@@ -280,7 +281,6 @@ def resolve_cpp2il_path():
     else:
         exe = os.path.join(base, "Cpp2IL.exe")  # fallback
 
-    # --- Automatisk sætte chmod 777 på macOS og Linux ---
     if os_name in ("linux", "macos") and os.path.isfile(exe):
         try:
             os.chmod(exe, 0o777)
