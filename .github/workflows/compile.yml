@@ -26,7 +26,6 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.arch }}
-
     steps:
       - name: Check out source code
         uses: actions/checkout@v4
