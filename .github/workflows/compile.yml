@@ -47,12 +47,12 @@ jobs:
           chmod 777 Cpp2IL
           ./Cpp2IL --version
         
-      # - name: Testing Cpp2IL on macOS arm64
-        # if: matrix.os == 'macos-latest' && matrix.arch == 'arm64'
-        # run: |
-          # cd Cpp2IL/macOS
-          # chmod 777 Cpp2ILarm64
-          # ./Cpp2ILarm64 --version
+      - name: Testing Cpp2IL on macOS arm64
+        if: matrix.os == 'macos-latest' && matrix.arch == 'arm64'
+        run: |
+          cd Cpp2IL/macOS
+          chmod 777 Cpp2ILarm64
+          ./Cpp2ILarm64 --version
         
       - name: Testing Cpp2IL on Windows x86_64
         if: matrix.os == 'windows-latest'
