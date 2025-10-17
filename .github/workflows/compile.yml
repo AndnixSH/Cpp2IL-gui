@@ -11,16 +11,20 @@ jobs:
           - os: ubuntu-latest
             arch: x64
             bin_path: Cpp2IL/Linux
+            
             # Not working
           # - os: ubuntu-latest
             # arch: arm64
             # bin_path: Cpp2IL/Linux-arm64
+            
           - os: macos-latest
             arch: x64
-            bin_path: Cpp2IL/macOS
+            bin_path: Cpp2IL/macOS-arm64
+            
           - os: macos-latest
             arch: arm64
-            bin_path: Cpp2IL/macOS-arm64
+            bin_path: Cpp2IL/macOS
+            
           - os: windows-latest
             arch: x64
             bin_path: Cpp2IL/Windows
@@ -64,5 +68,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: $Cpp2IL-GUI-${{ matrix.os }}-${{ matrix.arch }}
+          name: Cpp2IL-GUI-${{ matrix.os }}-${{ matrix.arch }}
           path: artifacts/

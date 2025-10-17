@@ -17,8 +17,6 @@
 # Note
 Check the Cpp2IL Documentation first
 
-Cpp2IL works best on Windows
-
 # How to compile
 
 I use Pyinstaller https://pyinstaller.org/en/stable/
@@ -33,6 +31,7 @@ Install Pyinstaller on your favorite operating system then run `pyinstaller --on
 ![Image1](/Preview/Preview3.png)
 
 # Credits
+- YeetDisDude - for Cpp2IL-GUI | [GitHub](https://github.com/YeetDisDude/Cpp2IL-gui)
 - SamboyCoding - for Cpp2IL | [GitHub](https://github.com/SamboyCoding/cpp2il)
 
 [Discord](https://discord.gg/wnr9ME7enQ)
