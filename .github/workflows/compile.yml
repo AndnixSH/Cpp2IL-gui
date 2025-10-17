@@ -11,11 +11,11 @@ jobs:
           - os: ubuntu-latest
             arch: x64
             bin_path: Cpp2IL/Linux
-          - os: ubuntu-latest
-            arch: arm64
-          # Not working
+            # Not working
+          # - os: ubuntu-latest
+            # arch: arm64
             # bin_path: Cpp2IL/Linux-arm64
-          # - os: macos-latest
+          - os: macos-latest
             arch: x64
             bin_path: Cpp2IL/macOS
           - os: macos-latest
